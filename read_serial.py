@@ -23,15 +23,16 @@ if __name__ == '__main__':
                 ser.write(b"sentryOn\n")
                 ser.flush()
                 oldSetting = setting
-        line = ser.readline().decode('utf-8').rstrip()
-        print(line)
-            # try:
-                # print(json.loads(line))
-                # message = json.loads(line)
-                # message["date"] = datetime.now().isoformat()
-                # print(requests.post("https://robo-backend.nesvo.dev/message/", json=message))
-            # except json.decoder.JSONDecodeError:
-                # print('Failed to read message')
+        if ser.in_waiting > 0:
+            line = ser.readline().decode('utf-8').rstrip()
+            print(line)
+            try:
+                print(json.loads(line))
+                message = json.loads(line)
+                message["date"] = datetime.now().isoformat()
+                print(requests.post("https://robo-backend.nesvo.dev/message/", json=message))
+            except json.decoder.JSONDecodeError:
+                print('Failed to read message')
 
                 
                 # ser.write(b"Hello from Raspberry Pi!\n")
