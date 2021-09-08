@@ -48,7 +48,10 @@ async def handle_message(message: Message):
 
 @app.get("/last/")
 async def handle_last():
-    return messages[-1]
+    if len(messages) > 0:
+        return messages[-1]
+    else:
+        return []
 
 @app.get("/sentry")
 async def get_sentry():
