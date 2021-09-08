@@ -10,6 +10,10 @@ from fastapi.middleware.cors import CORSMiddleware
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "http://nesvo-bot.netlify.app",
+    "https://nesvo-bot.netlify.app",
+    "https://bot.nesvo.dev",
+    "http://bot.nesvo.dev",
 ]
 
 app.add_middleware(
